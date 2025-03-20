@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="dflydev">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/vendor/dflydev.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
