@@ -4,9 +4,16 @@
     </IfModule>
 
     RewriteEngine On
-    
-    #ErrorDocument 200 "Hello. This is your .htaccess file talking."
-    #RewriteRule ^ - [L,R=200]
+
+    # السماح بتحميل الصور والملفات من storage/
+    RewriteCond %{REQUEST_URI} ^/storage/(.*)$ [NC]
+    RewriteRule ^storage/(.*)$ /storage/$1 [L]
+
+    # منع الوصول إلى الملفات الحساسة داخل storage/
+    <FilesMatch "\.(env|log|json|sql|php|ini|bak|sh)$">
+        Order Allow,Deny
+        Deny from all
+    </FilesMatch>
 
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
@@ -22,3 +29,4 @@
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
 </IfModule>
+
