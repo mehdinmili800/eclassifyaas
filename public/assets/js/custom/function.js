@@ -1,9 +1,12 @@
 "use strict";
 
 function trans(label) {
-    // return window.languageLabels.hasOwnProperty(label) ? window.languageLabels[label] : label;
-    return window?.languageLabels[label] || label;
+    if (window.languageLabels && window.languageLabels.hasOwnProperty(label)) {
+        return window.languageLabels[label];
+    }
+    return label; // العودة للنص الأصلي إذا لم يتم العثور عليه
 }
+
 
 function showErrorToast(message) {
     Toastify({
