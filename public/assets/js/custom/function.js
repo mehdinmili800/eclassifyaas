@@ -10,7 +10,8 @@ function trans(label) {
         console.warn("Warning: window.languageLabels is not defined!");
         return label; // العودة إلى النص الأصلي
     }
-    return window.languageLabels[label] || label;
+    
+    return window.languageLabels[label] || label; 
 }
 
 
