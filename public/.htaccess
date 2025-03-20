@@ -13,6 +13,10 @@
         Deny from all
     </FilesMatch>
 
+    # السماح بجلب بيانات `category`
+    RewriteCond %{REQUEST_URI} ^/category$ [NC]
+    RewriteRule ^category$ /index.php [L]
+
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
