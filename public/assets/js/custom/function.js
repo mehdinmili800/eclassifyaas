@@ -1,11 +1,18 @@
 "use strict";
 
+
+console.log("window.languageLabels:", window.languageLabels);
+console.log("window.languageLabels['Are you sure']:", window.languageLabels?.["Are you sure"]);
+
+
 function trans(label) {
-    if (window.languageLabels && window.languageLabels.hasOwnProperty(label)) {
-        return window.languageLabels[label];
+    if (typeof window.languageLabels === "undefined" || window.languageLabels === null) {
+        console.warn("Warning: window.languageLabels is not defined!");
+        return label; // العودة إلى النص الأصلي
     }
-    return label; // العودة للنص الأصلي إذا لم يتم العثور عليه
+    return window.languageLabels[label] || label;
 }
+
 
 
 function showErrorToast(message) {
